@@ -23,6 +23,27 @@ void clearField(int size, char field[][3]) {
         }
     }
 }
+void Draw(int size, char field[][3], int y, int x, bool isCross) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    cout << "+---+---+---+\n";
+    for (int i = 0; i < size; i++) {
+        cout << "| ";
+        for (int j = 0; j < size; j++) {
+            if (i == y && j == x) {
+                if (isCross) {
+                    SetConsoleTextAttribute(h, (COLOR_RED MOVING) | (WHITE_COLOR));
+                }
+                else {
+                    SetConsoleTextAttribute(h, (GREEN_COLOR MOVING) | (WHITE_COLOR));
+                }
+            }
+            cout << field[i][j];
+            SetConsoleTextAttribute(h, (COLOR_BLACK MOVING) | (WHITE_COLOR));
+            cout << " | ";
+        }
+        cout << "\n+---+---+---+\n";
+    }
+}
 int main() {
 
 
