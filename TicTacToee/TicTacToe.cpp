@@ -129,6 +129,34 @@ bool IsAllBusy(int size, char field[][3]) {
     return true;
 }
 int main() {
+const int size = 3;
+    char field[size][size];
+
+    SetUp(field, size);
+
+    int x = 1, y = 1;
+    bool isCross = true;
+    while (true) {
+        Draw(size, field, y, x, isCross);
+
+        int countX = 0, countO = 0;
+        int e = 0;
+        if (WhoIsWinner(size, field, CROSS)) {
+            cout << "X is winner!";
+        }
+        else if (WhoIsWinner(size, field, CIRCLE)) {
+            cout << "O is winner!";
+        }
+        else if (IsAllBusy(size, field)) {
+            cout << "DRAW!!!";
+        }
+        Input(y, x, isCross, field);
+
+        HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+
+        SetConsoleCursorPosition(h, COORD{0, 0});
+
+    }
 
 
     return 0;
