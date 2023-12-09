@@ -85,6 +85,29 @@ bool WhoIsWinner(int size, char field[][3], char ch) {
     }
     return false;
 }
+void Input(int& y, int& x, bool& isCross, char field[][3]) {
+
+    char ch = _getwch();
+    cout << "\r";
+
+    if (ch == UP && y != 0) {
+        y--;
+    }
+    else if (ch == DOWN && y != 2) {
+        y++;
+    }
+    else if (ch == RIGHT && x != 2) {
+        x++;
+    }
+    else if (ch == LEFT && x != 0) {
+        x--;
+    }
+
+    else if (ch == ENTER && field[y][x] == ' ') {
+        field[y][x] = (isCross ? CROSS : CIRCLE);
+        isCross = !isCross;
+    }
+}
 int main() {
 
 
