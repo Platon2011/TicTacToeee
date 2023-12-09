@@ -108,6 +108,15 @@ void Input(int& y, int& x, bool& isCross, char field[][3]) {
         isCross = !isCross;
     }
 }
+void SetUp(char field[][3], int size) {
+    HANDLE h = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO cursorInfo;
+    GetConsoleCursorInfo(h, &cursorInfo);
+    cursorInfo.bVisible = false;
+    SetConsoleCursorInfo(h, &cursorInfo);
+
+    clearField(size, field);
+}
 int main() {
 
 
